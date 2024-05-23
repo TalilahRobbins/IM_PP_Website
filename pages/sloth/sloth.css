@@ -1,0 +1,25 @@
+ html, body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #image-container {
+            position: absolute;
+            animation: scroll-image 80s linear infinite;
+        }
+        #image {
+            width: 50%; /* Half the original size */
+        }
+        @keyframes scroll-image {
+            0% {
+                transform: translateX(100vw);
+            }
+            100% {
+                transform: translateX(-100vw);
+            }
+        }
