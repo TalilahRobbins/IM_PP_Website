@@ -1,0 +1,41 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+  margin: auto;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: black;
+  color: #89fc00;
+  transition: background-color 0.5s, color 0.5s;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#typing {
+  font-size: 2rem;
+  text-align: center;
+  max-width: 80%;
+}
+
+#title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 5rem;
+  color: white;
+  font-family: "newsserif-large-variable", sans-serif;
+  font-variation-settings: 'wght' 100;
+  letter-spacing: 2px;
+  z-index: 1000;
+}
