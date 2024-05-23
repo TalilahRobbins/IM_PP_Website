@@ -1,0 +1,50 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+#canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+canvas {
+  display: block;
+}
+
+
+.gif {
+  position: absolute; /* Position the image absolutely */
+  width: 200px; /* Adjust width */
+  height: auto; /* Automatically adjust height */
+}
+
+#gif1 {
+  top: 50px; /* Adjust top position */
+  left: 50px; /* Adjust left position */
+}
+
+#gif2 {
+  top: 250px; /* Adjust top position */
+  left: 950px; /* Adjust left position */
+}
+
+#gif3 {
+top: 550px; /* Adjust top position */
+left: 350px; /* Adjust left position */
+}
+
+
+.word {
+  position: absolute;
+  font-size: 60px;
+  cursor: pointer;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

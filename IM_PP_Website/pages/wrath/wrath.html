@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sound-Powered Glitch</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e50000;
+  }
+  .text {
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out;
+  }
+</style>
+</head>
+<body>
+
+<div class="text" id="text1">what passing-bells for these who die as cattle?
+    only the monstrous anger of the guns.
+    only the stuttering rifles' rapid rattle
+    can patter out their hasty orisons</div>
+<div class="text" id="text2">it came today to visit
+    and moved into the house
+    it was smaller than an elephant
+    but larger than a mouse</div>
+<div class="text" id="text3">go ahead and praise your ear-****** demons then,
+    while I lay to rest under the waters with my sirens
+    drowning out all the noise you made in my life</div>
+
+<script>
+  // Access the paragraphs
+  const paragraphs = document.querySelectorAll('.text');
+
+  // Initialize microphone access
+  navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(function(stream) {
+      // Create audio context
+      const audioContext = new AudioContext();
+      const analyser = audioContext.createAnalyser();
+      const microphone = audioContext.createMediaStreamSource(stream);
+      const javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
+
+      // Connect microphone to analyser
+      microphone.connect(analyser);
+      analyser.connect(javascriptNode);
+      javascriptNode.connect(audioContext.destination);
+
+      // Threshold to apply the scaling and shaking effects
+      const threshold = 50;
+
+      // Get audio input data and determine intensity of sound
+      javascriptNode.onaudioprocess = function() {
+        const array = new Uint8Array(analyser.fftSize);
+        analyser.getByteTimeDomainData(array);
+        let maxAmplitude = Math.max(...array);
+
+        // Adjust CSS styles based on sound intensity
+        paragraphs.forEach(function(paragraph) {
+          if (maxAmplitude > threshold) {
+            const shakeIntensity = (maxAmplitude - threshold) / (128 - threshold) * 100; // Adjust multiplier as needed
+            const scalingFactor = 1 + (shakeIntensity / 200); // Scale factor based on sound intensity
+            const rotation = Math.random() * shakeIntensity - (shakeIntensity / 2);
+            paragraph.style.transform = `rotate(${rotation}deg) scale(${scalingFactor})`;
+          } else {
+            // Reset to original size and position when sound intensity is below the threshold
+            paragraph.style.transform = 'scale(1) rotate(0deg)';
+          }
+        });
+      };
+    })
+    .catch(function(err) {
+      console.error('Error accessing microphone:', err);
+    });
+</script>
+
+</body>
+</html>
+
+
+

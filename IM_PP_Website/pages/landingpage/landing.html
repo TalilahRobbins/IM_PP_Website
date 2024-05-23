@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Combined Page</title>
+<style>
+  body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 170%;
+    margin: 0;
+    padding-left: 400px;
+    padding-right: 400px;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+  }
+  .link {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+    /* Styles for the popup */
+    .popup {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        position: fixed;
+        font-size: xxx-large;
+        background-color: #ffffff;
+        padding: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        max-width: 60%;
+        height: auto;
+        z-index: 9999;
+        left: 60%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+    }
+
+
+    /* Styles for the close button */
+    .close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<audio id="hornSound" src="horn.wav"></audio> <!-- Add an audio element -->
+
+<!-- Content -->
+<div class="container">
+  <div class="left">
+    <p class="link" onclick="playHornSound()">Loss of life</p> <!-- Trigger horn sound -->
+  </div>
+  <div class="right">
+    <p class="link" onclick="window.location.href='lots_of_love_page.html'">Lots of love</p> <!-- Navigate to internal page -->
+  </div>
+</div>
+
+<!-- Popup -->
+<div id="popup" class="popup">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <p>Do not enter this site if you are in love.</p>
+</div>
+
+<script>
+  function playHornSound() {
+    var hornSound = document.getElementById("hornSound");
+    hornSound.play(); // Play the horn sound
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+        var popups = document.querySelectorAll('.popup');
+
+        // Function to close the popup and generate a new one
+        function closePopup(popup) {
+            popup.style.display = 'none';
+            generateNewPopup();
+        }
+
+        // Function to generate a new popup
+        function generateNewPopup() {
+            var newPopup = document.createElement('div');
+            newPopup.classList.add('popup');
+            newPopup.innerHTML = `
+                <span class="close">&times;</span>
+                <p>Seriously, girl.</p>
+            `;
+            
+            // Close the new popup when the close button is clicked
+            var newCloseButton = newPopup.querySelector('.close');
+            newCloseButton.addEventListener('click', function () {
+                newPopup.style.display = 'none';
+            });
+
+            // Set a random position for the new popup
+            newPopup.style.left = getRandomPosition();
+            newPopup.style.top = getRandomPosition();
+
+            // Append the new popup to the document body and display it
+            document.body.appendChild(newPopup);
+            newPopup.style.display = 'block';
+        }
+
+        // Close the popup when the close button is clicked
+        popups.forEach(function(popup) {
+            var closeButton = popup.querySelector('.close');
+
+            closeButton.addEventListener('click', function() {
+                closePopup(popup);
+            });
+        });
+
+        // Show the initial popup
+        popups[0].style.display = 'block';
+
+        // Randomly choose the initial direction for the first popup
+        var initialDirection = Math.random() < 0.5 ? -1 : 1;
+        var posX = 50 + (initialDirection * 10); // Initial position
+        var direction = initialDirection; // Initial direction
+
+        // Bounce effect - Move the first popup back and forth horizontally
+        var interval = setInterval(function () {
+            popups[0].style.left = posX + '%';
+            posX += direction;
+            if (posX >= 60 || posX <= 40) { // Change direction at these thresholds
+                direction *= -1;
+            }
+        }, 50);
+
+        // Function to get a random position
+        function getRandomPosition() {
+            var min = 10; // Minimum position (10% from the top/left)
+            var max = 70; // Maximum position (70% from the top/left)
+            return Math.floor(Math.random() * (max - min + 1) + min) + '%';
+        }
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
