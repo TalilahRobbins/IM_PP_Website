@@ -6,7 +6,6 @@ html, body {
   overflow: hidden;
 }
 
-
 #canvas-container {
   position: absolute;
   top: 0;
@@ -19,28 +18,26 @@ canvas {
   display: block;
 }
 
-
 .gif {
-  position: absolute; /* Position the image absolutely */
-  width: 200px; /* Adjust width */
-  height: auto; /* Automatically adjust height */
+  position: absolute;
+  width: 200px;
+  height: auto;
 }
 
 #gif1 {
-  top: 50px; /* Adjust top position */
-  left: 50px; /* Adjust left position */
+  top: 50px;
+  left: 50px;
 }
 
 #gif2 {
-  top: 250px; /* Adjust top position */
-  left: 950px; /* Adjust left position */
+  top: 250px;
+  left: 950px;
 }
 
 #gif3 {
-top: 550px; /* Adjust top position */
-left: 350px; /* Adjust left position */
+top: 550px;
+left: 350px;
 }
-
 
 .word {
   position: absolute;
