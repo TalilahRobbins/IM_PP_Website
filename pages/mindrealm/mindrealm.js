@@ -9,10 +9,10 @@ let urls = [
   "../envy/envy.html",
   "../gluttony/gluttony.html",
   "../greed/greed.html",
-  "../lust/lust.html",
-  "../pride/pride.html",
-  "../sloth/sloth.html",
   "../wrath/wrath.html",
+  "../pride/pride.html",
+  "../lust/lust.html",
+  "../sloth/sloth.html",
 ];
 let texts = [
   "Emmeline",
@@ -20,8 +20,8 @@ let texts = [
   "Gwendolyn",
   "Winona",
   "Piper",
-  "Sorrel",
   "Lorelei",
+  "Sorrel",
 ];
 let hoveredText = "";
 let font;
