@@ -1,32 +1,64 @@
 const sentences = [
-    "We had a break after that last one, which was good for us. We were still working though. We went away and did the music for a play at the National Theatre. The piece was Medea, which is a Greek tragedy and very traditional, but was updated for this production. Carrie Cracknell was the director. We spent about a year doing that—working with a chorus of 13 women vocalists—which was great. It was wonderful to be doing something completely different and helps shake up the way you think about things when you go back to doing your own work.",
-  ];
-  
-  let currentSentence = 0;
-  let currentChar = 0;
-  
-  function type() {
-    if (currentChar < sentences[currentSentence].length) {
-      document.getElementById("typing").innerText +=
-        sentences[currentSentence].charAt(currentChar);
-      currentChar++;
-      setTimeout(type, 70); // Adjust the speed here
-    } else {
-      currentChar = 0;
-      currentSentence++;
-      if (currentSentence < sentences.length) {
-        document.getElementById("typing").innerText += " "; // No pause between sentences
-        type();
-      } else {
-        // Reset for loop
-        setTimeout(() => {
-          document.getElementById("typing").innerText = "";
-          currentSentence = 0;
-          type();
-        }, 0); // No pause before restarting the loop
-      }
-    }
+  "I hope every laugh they share with them is followed by a fleeting sense of emptiness.",
+  "May they occasionally glimpse my face in their thoughts, tainting their joy.",
+  "I hope their moments of bliss are interrupted by sudden waves of sorrow.",
+  "May their new love always feel a subtle undercurrent of unease.",
+  "I wish their perfect days with them are haunted by whispers of what could have been.",
+  "May their moments of bliss be interrupted by thoughts of the past.",
+  "I hope their perfect life is always haunted by a quiet, persistent void.",
+  "May their bright future always carry the shadow of what we had.",
+  "May their dreams of them be disturbed by memories of us.",
+  "May they sometimes hear my voice in their head.",
+  "May they feel a persistent, unexplainable melancholy in their brightest, happiest moments.",
+];
+
+let currentChar = 0;
+let currentSentenceIndex = 0;
+let sentenceLength = 0;
+let isBackgroundBlack = true;
+
+function getNextSentence() {
+  randomStartSentence = sentences[currentSentenceIndex];
+  sentenceLength = randomStartSentence.length;
+  currentSentenceIndex = (currentSentenceIndex + 1) % sentences.length;
+}
+
+function type() {
+  const typingElement = document.getElementById("typing");
+  if (currentChar < sentenceLength) {
+    typingElement.textContent += randomStartSentence.charAt(currentChar);
+    currentChar++;
+  } else {
+    typingElement.textContent = "";
+    currentChar = 0;
+    getNextSentence();
+    toggleBackground();
   }
-  
-  window.onload = type;
-  
+  setTimeout(type, 70);
+}
+
+function toggleBackground() {
+  const body = document.body;
+  if (isBackgroundBlack) {
+    body.style.backgroundColor = "#89fc00";
+    body.style.color = "black";
+  } else {
+    body.style.backgroundColor = "black";
+    body.style.color = "#89fc00";
+  }
+  isBackgroundBlack = !isBackgroundBlack;
+}
+
+window.onload = () => {
+  // Select a random starting sentence index
+  currentSentenceIndex = Math.floor(Math.random() * sentences.length);
+  getNextSentence();
+
+  // Initialize the background color
+  document.body.style.backgroundColor = "#89fc00";
+  document.body.style.color = "black";
+  document.body.style.fontFamily = "'Courier New', Courier, monospace";
+  isBackgroundBlack = false;
+
+  type();
+};
