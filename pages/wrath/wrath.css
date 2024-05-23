@@ -1,22 +1,8 @@
 body {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
     margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0;
     height: 100vh;
-    background-color: #e50000;
-  }
-  .text {
-    width: 150px;
-    height: 150px;
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 50px;
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out;
-  }
+    width: 100vw;
+    background-color: #000; /* Black background */
+    overflow: hidden; /* Ensure no scrollbars appear */
+}
