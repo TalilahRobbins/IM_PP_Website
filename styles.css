@@ -1,0 +1,40 @@
+ body {
+   font-family: Helvetica, Arial, sans-serif;
+   font-size: 170%;
+   margin: 0;
+   padding-left: 400px;
+   padding-right: 400px;
+ }
+ .container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 100vh;
+ }
+ .link {
+   text-decoration: underline;
+   cursor: pointer;
+ }
+
+.popup {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  position: fixed;
+  font-size: xxx-large;
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  max-width: 60%;
+  height: auto;
+  z-index: 9999;
+  left: 60%;
+  top: 20%;
+  transform: translate(-50%, -50%);
+  }
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
