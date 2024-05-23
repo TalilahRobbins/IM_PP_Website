@@ -1,0 +1,24 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow-x: hidden;
+  background-color: black;
+  color: #FF0000;
+}
+
+canvas {
+  display: block;
+  margin: auto;
+}
+
+#image {
+  display: inline-block;
+  animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
