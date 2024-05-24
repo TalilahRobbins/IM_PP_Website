@@ -1,13 +1,23 @@
-var sketch1 = function (p) {
+// This code is based on the sketch ____ by user ____, available at ________
+// Assistance from ChatGPT enabled the refinement, customisation, and learning of this code
+
+  var sketch1 = function (p) {
   var font;
-  var mic;
+  var music;
+  var analyzer;
   var volume = 0;
+  var isPlaying = false;
 
   var texts = [];
 
   p.preload = function () {
     font = p.loadFont("HelveticaNowDisplay.otf");
+    music = p.loadSound("Adele.mp3", loaded);
   };
+
+  function loaded() {
+    console.log("Music loaded successfully");
+  }
 
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight);
@@ -25,12 +35,10 @@ var sketch1 = function (p) {
       "Endless pain",
     ];
 
-    var size = 150; // Initial text size
+    var size = 150;
 
-    // Initialize microphone input
-    mic = new p5.AudioIn();
-    mic.start();
-    console.log("Microphone started");
+    // Initialize the sound analyzer
+    analyzer = new p5.Amplitude();
 
     sentences.forEach((sentence) => {
       var bounds = font.textBounds(sentence, 0, 0, size);
@@ -56,36 +64,39 @@ var sketch1 = function (p) {
     });
 
     p.noStroke();
+
+    p.mousePressed = function () {
+      if (!isPlaying) {
+        music.play();
+        analyzer.setInput(music);
+        isPlaying = true;
+        console.log("Music playing");
+      }
+    };
   };
 
   p.draw = function () {
-    p.background(0); // Black background
-    p.fill("#ff0000"); // Red text color
+    p.background(0);
+    p.fill("#ff0000");
 
-    // Get the volume from the microphone
-    volume = mic.getLevel();
+    volume = analyzer.getLevel();
     console.log("Volume level: ", volume);
 
-    // Map volume to text size and make it more sensitive to low sound
-    var size = p.map(volume, 0, 0.2, 100, 300); // Adjust the upper limit as needed
+    var size = p.map(volume, 0, 0.2, 150, 200);
 
     texts.forEach((textObj) => {
       var { sentence, bounds, posX, posY, velX, velY, points } = textObj;
 
-      // Update bounds based on new size
       bounds = font.textBounds(sentence, 0, 0, size);
 
-      // Map volume to jiggle and make it more sensitive to low sound
-      var jiggle = p.map(volume, 0, 0.2, 1, 100); // Reduce the upper limit for less jiggle
+      var jiggle = p.map(volume, 0, 0.2, 1, 20);
 
       var scaleFactor =
-        p.min(p.width / bounds.w, p.height / bounds.h) * (2 / 3); // Reduce the size by 1/3
+        p.min(p.width / bounds.w, p.height / bounds.h) * (2 / 3);
 
-      // Update position
       posX += velX;
       posY += velY;
 
-      // Check for bouncing off edges
       if (posX - (bounds.w * scaleFactor) / 2 < 0) {
         posX = (bounds.w * scaleFactor) / 2;
         velX *= -1;
@@ -106,11 +117,11 @@ var sketch1 = function (p) {
       p.scale(scaleFactor);
       p.translate(-bounds.w / 2, bounds.h / 2);
 
-      p.strokeWeight(.4); // Increase stroke weight
+      p.strokeWeight(0.4);
 
       for (var i = 0; i < points.length; i++) {
         var pnt = points[i];
-        p.stroke("#ff0000"); // Change stroke color to red
+        p.stroke("#ff0000");
         p.line(
           pnt.x + jiggle * p.randomGaussian(),
           pnt.y + jiggle * p.randomGaussian(),
@@ -120,7 +131,6 @@ var sketch1 = function (p) {
       }
       p.pop();
 
-      // Update the text object
       textObj.bounds = bounds;
       textObj.posX = posX;
       textObj.posY = posY;
@@ -135,3 +145,14 @@ var sketch1 = function (p) {
 };
 
 new p5(sketch1);
+
+document.addEventListener("DOMContentLoaded", function () {
+  var closeBtn = document.getElementById("close-btn");
+  var popupBox = document.getElementById("popup-box");
+
+  popupBox.style.display = "block";
+
+  closeBtn.addEventListener("click", function () {
+    popupBox.style.display = "none";
+  });
+});
