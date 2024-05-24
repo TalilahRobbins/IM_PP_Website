@@ -4,7 +4,10 @@ html, body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background-color:#1f08ef;
+  cursor: none;
 }
+
 
 #canvas-container {
   position: absolute;
@@ -18,30 +21,59 @@ canvas {
   display: block;
 }
 
+
 .gif {
-  position: absolute;
-  width: 200px;
-  height: auto;
+  position: absolute; /* Position the image absolutely */
+  width: 200px; /* Adjust width */
+  height: auto; /* Automatically adjust height */
 }
 
 #gif1 {
-  top: 50px;
-  left: 50px;
+  top: 50px; /* Adjust top position */
+  left: 50px; /* Adjust left position */
 }
 
 #gif2 {
-  top: 250px;
-  left: 950px;
+  top: 250px; /* Adjust top position */
+  left: 950px; /* Adjust left position */
 }
 
 #gif3 {
-top: 550px;
-left: 350px;
+top: 550px; /* Adjust top position */
+left: 350px; /* Adjust left position */
 }
+
 
 .word {
   position: absolute;
-  font-size: 60px;
+  font-size: 70px;
+  color: #ffffff;
   cursor: pointer;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+
+#custom-cursor {
+    position: fixed;
+    top: 0;
+    color: white;
+    left: 0;
+    font-family: 'Courier New', Courier, monospace;
+    display: none; /* Initially hide the custom cursor */
+    pointer-events: none; /* Allow clicks to pass through the custom cursor */
+}
+#custom-cursor.visible {
+    display: block; /* Show the custom cursor when needed */
+}
+
+#upper-left-text {
+  position: fixed;
+  top: 10px; /* Adjust the top distance according to your preference */
+  left: 10px; /* Adjust the left distance according to your preference */
+  font-size: 50px;
+  font-weight: normal;
+  font-family: 'Courier New', Courier, monospace;
+  color: #ffffff; /* Text color */
+  padding: 5px 10px; /* Padding around the text */
+}
+
