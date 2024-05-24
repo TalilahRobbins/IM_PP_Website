@@ -99,11 +99,13 @@ function togglePlayPause() {
     audio.pause();
     playButton.style.backgroundColor = "#000";
     playButton.style.color = "#fff";
+    playButton.style.fontFamily = "'Courier New', Courier, monospace";
     playButton.textContent = "let it pour";
   } else {
     audio.play();
     playButton.style.backgroundColor = "#fff";
     playButton.style.color = "#000";
+    playButton.style.fontFamily = "'Courier New', Courier, monospace";
     playButton.textContent = "make it stop";
   }
   isPlaying = !isPlaying;
