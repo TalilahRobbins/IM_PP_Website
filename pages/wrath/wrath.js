@@ -1,4 +1,4 @@
-// This code is based on the sketch ____ by user ____, available at ________
+// This code is based on a sketch created by Andy Simionato and Karen ann Donnachie, available at https://simandy.github.io/codewords/
 // Assistance from ChatGPT enabled the refinement, customisation, and learning of this code
 
   var sketch1 = function (p) {
