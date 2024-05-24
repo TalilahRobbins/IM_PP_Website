@@ -1,5 +1,5 @@
-// The base of this sketch was sourced from https://teddavis.org/p5live
-// Code refinement and customisation was made with the help of ChatGPT
+// Original code sourced from https://teddavis.org/p5live
+// Assistance from ChatGPT enabled the refinement, customisation, and learning of this code
 
 let images = [];
 let hoverImages = [];
