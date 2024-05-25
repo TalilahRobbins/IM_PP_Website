@@ -1,3 +1,6 @@
+// This code is based on a sketch by UnoLab that we discovered on Open Processing, available at https://openprocessing.org/sketch/2154535
+// Assistance from ChatGPT enabled the refinement, customisation, and learning of this code
+
 let x = (y = 0);
 const fontSize = 16;
 const noiseScale = 0.0004;
