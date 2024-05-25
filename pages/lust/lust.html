@@ -1,17 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUST | Lillith</title>
-    <script src="../../libraries/p5.min.js"></script>
-    <link rel="stylesheet" href="lust.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOL | Lust</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 10px;
+        height: 100vh;
+        background-color: #B10C10;
+        padding: 20px;
+        display: block;
+    }
+
+    #header{
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        font-size: 30px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+    }
+
+    #word1{
+        position: absolute;
+        top: 0px;
+        left: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer; 
+    }
+
+    #word2 {
+        position: absolute;
+        top: 0px;
+        right: 20PX;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word3 {
+        position: absolute;
+        top: 150px;
+        left: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word4 {
+        position: absolute;
+        top: 150px;
+        right: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word5 {
+        position: absolute;
+        top: 300px;
+        left: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word6 {
+        position: absolute;
+        top: 300px;
+        right: 150px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word7 {
+        position: absolute;
+        top: 450px;
+        left: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word8 {
+        position: absolute;
+        top: 450px;
+        right: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word9 {
+        position: absolute;
+        top: 600px;
+        left: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word10 {
+        position: absolute;
+        top: 600px;
+        right: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word11 {
+        position: absolute;
+        top: 750px;
+        left: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word12 {
+        position: absolute;
+        top: 750px;
+        right: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+
+    #word1:hover {
+        background-image: url('/pages/lust/image1.jpeg');
+        background-size: contain;
+    }
+
+    #word2:hover {
+        background-image: url('/pages/lust/image2.jpeg');
+        background-size: contain;
+    }
+
+    #word3:hover {
+        background-image: url('/pages/lust/image3.jpeg');
+        background-size: contain;
+    }
+
+    #word4:hover {
+        background-image: url('/pages/lust/image4.jpeg');
+        background-size: contain;
+    }
+
+    #word5:hover {
+        background-image: url('/pages/lust/image5.jpeg');
+        background-size: contain;
+    }
+
+
+    #word6:hover {
+        background-image: url('/pages/lust/image6.jpeg');
+        background-size: contain;
+    }
+
+    #word7:hover {
+        background-image: url('/pages/lust/image7.jpeg');
+        background-size: contain;
+    }
+
+    #word8:hover {
+        background-image: url('/pages/lust/image8.jpeg');
+        background-size: contain;
+    }
+
+    #word9:hover {
+        background-image: url('/pages/lust/image9.jpeg');
+        background-size: contain;
+    }
+
+    #word10:hover {
+        background-image: url('/pages/lust/image10.jpeg');
+        background-size: contain;
+    }
+
+    #word11:hover {
+        background-image: url('/pages/lust/image11.jpeg');
+        background-size: contain;
+    }
+
+    #word12:hover {
+        background-image: url('/pages/lust/image12.jpeg');
+        background-size: contain;
+    }
+
+    .word {
+        position: absolute;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+        font-size: 150px; /* Initial font size */
+        transition: transform 0.1s ease; /* Add transition for smooth trembling */
+    }
+    
+
+</style>
 </head>
-<body> 
-    <pre>this is a test for text</pre>
-    <div id="image">
-        <img src="image1.jpg" >
-    </div> 
+<body>
+   
+
+<div id="word1" class="word" >HEY</div>
+<div id="word2" class="word">IM SEXY & SAD</div>
+<div id="word3"class="word">INFATUATED</div>
+<div id="word4"class="word">CRAVING U</div>
+<div id="word5"class="word">HUNGRY</div>
+<div id="word6"class="word">IMPULSIVE</div>
+<div id="word7"class="word">PLEASE</div>
+<div id="word8"class="word">TALK TO ME</div>
+<div id="word9"class="word">WHISPER SWEET TO ME</div>
+<div id="word11"class="word">CALL ME</div>
+<div id="word12"class="word">0432111873</div>
+
+
+<script>
+    // Access the words
+    const words = document.querySelectorAll('.word');
+
+    // Function to continuously monitor microphone input volume
+    async function monitorVolume() {
+        try {
+            // Request microphone access
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+            // Create audio context
+            const audioContext = new AudioContext();
+
+            // Create analyser node
+            const analyser = audioContext.createAnalyser();
+
+            // Set analyser node properties
+            analyser.fftSize = 256; // Fast Fourier Transform size
+            const bufferLength = analyser.frequencyBinCount; // Number of data points
+
+            // Create microphone source node
+            const microphone = audioContext.createMediaStreamSource(stream);
+
+            // Connect microphone to analyser
+            microphone.connect(analyser);
+
+            // Function to check volume and apply trembling effect
+            function checkVolume() {
+                // Retrieve amplitude data
+                const dataArray = new Uint8Array(bufferLength);
+                analyser.getByteFrequencyData(dataArray);
+
+                // Find the maximum volume level
+                const maxVolume = Math.max(...dataArray);
+
+                // Normalize volume level to range [0, 1]
+                const volume = maxVolume / 255;
+
+                // Apply trembling effect to words based on volume level
+                const tremblingIntensity = volume * 50; // Adjust the trembling intensity
+                words.forEach(word => {
+                    const randomX = tremblingIntensity * (Math.random() * 2 - 1); // Generate random trembling in X direction
+                    const randomY = tremblingIntensity * (Math.random() * 2 - 1); // Generate random trembling in Y direction
+                    word.style.transform = `translate(${randomX}px, ${randomY}px)`; // Apply trembling effect
+                });
+            }
+
+            // Continuously monitor volume
+            setInterval(checkVolume, 100); // Adjust the interval as needed
+        } catch (err) {
+            console.error('Error accessing microphone:', err);
+        }
+    }
+
+    // Call the function to monitor volume and apply trembling effect
+    monitorVolume();
+</script>
 
 
 
