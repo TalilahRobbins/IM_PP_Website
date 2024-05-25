@@ -1,26 +1,217 @@
+<!-- We used CHATGPT to generate the code for the 'jumbling' animation, that responds to hover on the two main link directories. -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LOL</title>
+<style>
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 170%;
+  margin: 0;
+  padding-left: 400px;
+  padding-right: 400px;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+.link {
+  text-decoration: underline;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Add transition for smooth animation */
+}
+
+.popup {
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ position: fixed;
+ font-size: xxx-large;
+ background-color: #ffffff;
+ padding: 20px;
+ border: 1px solid #ccc;
+ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+ max-width: 60%;
+ height: auto;
+ z-index: 9999;
+ left: 60%;
+ top: 20%;
+ transform: translate(-50%, -50%);
+ }
+
+.close {
+ position: absolute;
+ top: 5px;
+ right: 5px;
+ cursor: pointer;
+}
+</style>
+
   <script src="../../libraries/p5.min.js"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
+
+
 <body>
 <audio id="hornSound" src="horn.wav"></audio>
+
 <div class="container">
   <div class="left">
     <p class="link" onclick="playHornSound()">Loss of life</p>
   </div>
+
   <div class="right">
     <p class="link" onclick="window.location.href='pages/mindrealm/mindrealm.html'">Lots of love</p>
   </div>
 </div>
+
 <div id="popup" class="popup">
   <span class="close" onclick="closePopup()">&times;</span>
     <p>Do not enter this site if you are in love.</p>
 </div>
+
 <script src="script.js"></script>
+
+
+<script>
+// Define a variable to store the jumble interval
+var jumbleInterval;
+
+// Function to start jumbling the text of a link
+function startJumble(element) {
+  jumbleInterval = setInterval(function() {
+    const text = element.textContent;
+    const jumbledText = shuffleString(text);
+    element.textContent = jumbledText;
+  }, 100); // Adjust the interval for the jumbling speed
+}
+
+// Function to stop jumbling the text of a link
+function stopJumble(element) {
+  clearInterval(jumbleInterval);
+}
+
+// Attach event listeners for mouseover and mouseout events
+document.querySelectorAll('.link').forEach(function(link) {
+  // Start jumbling the text and store the original text when the mouse enters the link
+  link.addEventListener('mouseover', function() {
+    startJumble(this);
+    jumbleText(this); // Also jumble the text initially
+  });
+  
+  // Stop jumbling the text and revert it back to its original form when the mouse leaves the link
+  link.addEventListener('mouseout', function() {
+    stopJumble(this);
+    revertText(this);
+  });
+});
+
+function playHornSound() {
+    var hornSound = document.getElementById("hornSound");
+    hornSound.play(); // Play the horn sound
+  }
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    var popups = document.querySelectorAll(".popup");
+  
+    // Function to close the popup and generate a new one
+    function closePopup(popup) {
+      popup.style.display = "none";
+      // Ensure that only one new popup is generated after closing the first one
+      generateNewPopupFlag = true;
+    }
+  
+    // Function to generate a new popup
+    function generateNewPopup() {
+      var newPopup = document.createElement("div");
+      newPopup.classList.add("popup");
+      newPopup.innerHTML = `
+        <span class="close">&times;</span>
+        <p>Seriously, girl.</p>
+      `;
+  
+      // Close the new popup when the close button is clicked
+      var newCloseButton = newPopup.querySelector(".close");
+      newCloseButton.addEventListener("click", function () {
+        closePopup(newPopup);
+      });
+  
+      // Set a random position for the new popup
+      newPopup.style.left = getRandomPosition();
+      newPopup.style.top = getRandomPosition();
+  
+      // Append the new popup to the document body and display it
+      document.body.appendChild(newPopup);
+      newPopup.style.display = "block";
+    }
+  
+    // Close the popup when the close button is clicked
+    popups.forEach(function (popup) {
+      var closeButton = popup.querySelector(".close");
+  
+      closeButton.addEventListener("click", function () {
+        closePopup(popup);
+        generateNewPopup(); // Generate a new popup after closing
+      });
+    });
+  
+    // Show the initial popup
+    popups[0].style.display = "block";
+  
+    // Randomly choose the initial direction for the first popup
+    var initialDirection = Math.random() < 0.5 ? -1 : 1;
+    var posX = 50 + initialDirection * 10; // Initial position
+    var direction = initialDirection; // Initial direction
+  
+    // Bounce effect - Move the first popup back and forth horizontally
+    var interval = setInterval(function () {
+      popups[0].style.left = posX + "%";
+      posX += direction;
+      if (posX >= 60 || posX <= 40) {
+        // Change direction at these thresholds
+        direction *= -1;
+      }
+    }, 50);
+  
+    // Function to get a random position
+    function getRandomPosition() {
+      var min = 10; // Minimum position (10% from the top/left)
+      var max = 70; // Maximum position (70% from the top/left)
+      return Math.floor(Math.random() * (max - min + 1) + min) + "%";
+    }
+  });
+
+// Function to jumble the text of a link
+function jumbleText(element) {
+  const text = element.textContent;
+  const jumbledText = shuffleString(text);
+  element.textContent = jumbledText;
+  element.dataset.originalText = text; // Store the original text
+}
+
+// Function to revert the text of a link
+function revertText(element) {
+  const originalText = element.dataset.originalText;
+  if (originalText) {
+    element.textContent = originalText;
+  }
+}
+
+// Function to shuffle a string
+function shuffleString(str) {
+  const arr = str.split('');
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr.join('');
+}
+
+
+</script>
 </body>
 </html>
