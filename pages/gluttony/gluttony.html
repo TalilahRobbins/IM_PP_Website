@@ -59,7 +59,7 @@
     ];
 
     let cursorSize = 80; // Increase cursor size
-    let clearingRadius = 130; // Increase clearing radius
+    let clearingRadius = 0; // Increase clearing radius
 
     function setup() {
       createCanvas(windowWidth, windowHeight);
@@ -67,7 +67,7 @@
     }
 
     function draw() {
-      background(255);
+      
       let t = frameCount * noiseScale;
       for (let i = 0; i < width; i += fontSize) {
         for (let j = 0; j < height; j += fontSize) {
@@ -387,3 +387,4 @@
 
 </body>
 </html>
+
