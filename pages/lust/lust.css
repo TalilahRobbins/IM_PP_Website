@@ -5,6 +5,7 @@
         background-color: #B10C10;
         padding: 20px;
         display: block;
+        overflow: hidden;
     }
 
     #header{
