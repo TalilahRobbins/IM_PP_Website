@@ -1,1 +1,206 @@
+   body, html {
+        margin: 0;
+        padding: 10px;
+        height: 100vh;
+        background-color: #B10C10;
+        padding: 20px;
+        display: block;
+    }
 
+    #header{
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        font-size: 30px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+    }
+
+    #word1{
+        position: absolute;
+        top: 0px;
+        left: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer; 
+    }
+
+    #word2 {
+        position: absolute;
+        top: 0px;
+        right: 20PX;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word3 {
+        position: absolute;
+        top: 150px;
+        left: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word4 {
+        position: absolute;
+        top: 150px;
+        right: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word5 {
+        position: absolute;
+        top: 300px;
+        left: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word6 {
+        position: absolute;
+        top: 300px;
+        right: 150px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word7 {
+        position: absolute;
+        top: 450px;
+        left: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word8 {
+        position: absolute;
+        top: 450px;
+        right: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word9 {
+        position: absolute;
+        top: 600px;
+        left: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word10 {
+        position: absolute;
+        top: 600px;
+        right: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word11 {
+        position: absolute;
+        top: 750px;
+        left: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word12 {
+        position: absolute;
+        top: 750px;
+        right: 20px;
+        font-size: 150px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+    }
+
+    #word1:hover {
+        background-image: url('img/image1.jpeg');
+        background-size: contain;
+    }
+
+    #word2:hover {
+        background-image: url('img/image2.jpeg');
+        background-size: contain;
+    }
+
+    #word3:hover {
+        background-image: url('img/image3.jpeg');
+        background-size: contain;
+    }
+
+    #word4:hover {
+        background-image: url('img/image4.jpeg');
+        background-size: contain;
+    }
+
+    #word5:hover {
+        background-image: url('img/image5.jpeg');
+        background-size: contain;
+    }
+
+    #word6:hover {
+        background-image: url('img/image6.jpeg');
+        background-size: contain;
+    }
+
+    #word7:hover {
+        background-image: url('img/image7.jpeg');
+        background-size: contain;
+    }
+
+    #word8:hover {
+        background-image: url('img/image8.jpeg');
+        background-size: contain;
+    }
+
+    #word9:hover {
+        background-image: url('img/image9.jpeg');
+        background-size: contain;
+    }
+
+    #word10:hover {
+        background-image: url('img/image10.jpeg');
+        background-size: contain;
+    }
+
+    #word11:hover {
+        background-image: url('img/image11.jpeg');
+        background-size: contain;
+    }
+
+    #word12:hover {
+        background-image: url('img/image12.jpeg');
+        background-size: contain;
+    }
+
+    .word {
+        position: absolute;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F6D5DC;
+        cursor: pointer;
+        font-size: 150px;
+        transition: transform 0.1s ease;
+    }
