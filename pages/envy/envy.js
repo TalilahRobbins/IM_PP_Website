@@ -50,11 +50,9 @@ function toggleBackground() {
 }
 
 window.onload = () => {
-  // Select a random starting sentence index
   currentSentenceIndex = Math.floor(Math.random() * sentences.length);
   getNextSentence();
 
-  // Initialize the background color
   document.body.style.backgroundColor = "#89fc00";
   document.body.style.color = "black";
   document.body.style.fontFamily = "'Courier New', Courier, monospace";
