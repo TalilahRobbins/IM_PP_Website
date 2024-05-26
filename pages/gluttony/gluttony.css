@@ -27,6 +27,7 @@ html, body {
 
 #canvas-container {
     position: absolute;
+    text-align: justify;
     width: 100vw;
     height: 100vh;
     z-index: 1;
