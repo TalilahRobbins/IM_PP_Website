@@ -1,5 +1,6 @@
 // This code is based on a sketch by UnoLab that we discovered on Open Processing, available at https://openprocessing.org/sketch/2154535
 // Assistance from ChatGPT enabled the refinement, customisation, and learning of this code
+
 let x = (y = 0);
 const fontSize = 16;
 const noiseScale = 0.0004;
@@ -17,12 +18,12 @@ let clearingRadius = 0;
 
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
-  canvas.parent('canvas-container'); // Append canvas to the container div
+  canvas.parent('canvas-container');
   textSize(fontSize);
 }
 
 function draw() {
-  clear(); // Clear the canvas each frame for the animation
+  clear();
 
   let t = frameCount * noiseScale;
   for (let i = 0; i < width; i += fontSize) {
