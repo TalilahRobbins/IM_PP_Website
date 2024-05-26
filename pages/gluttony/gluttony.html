@@ -5,107 +5,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gluttony</title>
-  <!-- Include p5.js library -->
+  <title>LOL | Gwendolyn</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      cursor: none;
-      width: 100vw;
-    }
-
-    .container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-
-
-    #text-behind {
-      position: fixed;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      left: 10px;
-      right: 10px;
-      font-size: px;
-      padding-top: 0%;
-      color: black;
-      z-index: 0; /* Ensure the text is behind the canvas */
-    }
-    
-  </style>
+  <link rel="stylesheet" href="greed.css">
 </head>
-
 <body>
- 
-
-
-  <!-- Audio element for chewing sound -->
   <audio id="chewing-audio" preload="auto">
     <source src="chewing.mp3" type="audio/mpeg">
   </audio>
-
   <div class="container"></div>
-  
-  <script>
-    let x = (y = 0);
-    const fontSize = 16;
-    const noiseScale = 0.0004;
-    const noiseStrength = 30; // Strength of noise effect
-    const foodEmojis = [
-      "🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🍈", "🍒", "🍑", "🍍", "🥭", "🍅", "🍆", "🥑", "🥦", "🥒", "🥬",
-      "🌶️", "🌽", "🥕", "🥔", "🍠", "🥐", "🍞", "🥖", "🥨", "🧀", "🥚", "🍳", "🥓", "🥩", "🍗", "🍖", "🦴", "🌭", "🍔", "🍟",
-      "🍕", "🥪", "🥙", "🌮", "🌯", "🥗", "🥘", "🍲", "🥣", "🥫", "🍱", "🍛", "🍣", "🍤", "🍙", "🍚", "🍘", "🍥", "🥮", "🍢",
-      "🍡", "🍧", "🍨", "🍦", "🥧", "🍰", "🎂", "🧁", "🍮", "🍭", "🍬", "🍫", "🍿", "🧂", "🍩", "🍪", "🌰", "🥜", "🍯", "🥛",
-      "🍼", "☕", "🍵", "🍶", "🍾", "🍷", "🍸", "🍹", "🍺", "🍻", "🥂", "🥃", "🥤", "🧃", "🧉", "🧊"
-    ];
-
-    let cursorSize = 150; // Increase cursor size
-    let clearingRadius = 0; // Increase clearing radius
-
-    function setup() {
-      createCanvas(windowWidth, windowHeight);
-      textSize(fontSize);
-    }
-
-    function draw() {
-      
-      let t = frameCount * noiseScale;
-      for (let i = 0; i < width; i += fontSize) {
-        for (let j = 0; j < height; j += fontSize) {
-          let distanceToCursor = dist(i, j, mouseX, mouseY);
-          if (distanceToCursor < clearingRadius) {
-            continue; // Skip drawing emoji if cursor is too close
-          }
-          const n = noise((i + x) * noiseScale, (j + y) * noiseScale, t);
-          const index = int(map(n, 0, 1, 0, foodEmojis.length));
-          let chr = foodEmojis[index];
-          // Introduce glitch effect
-          if (random(1) < 0.05) { // Adjust probability for glitchiness
-            chr = random(foodEmojis); // Replace with random emoji
-          }
-          push();
-          // Apply random offset for glitchy movement
-          translate(random(-noiseStrength, noiseStrength), random(-noiseStrength, noiseStrength));
-          text(chr, i, j);
-          pop();
-        }
-      }
-
-      // Draw the cursor
-     
-      stroke(0, 0); // Transparent stroke
-      ellipse(mouseX, mouseY, cursorSize, cursorSize);
-    }
-
-    function mouseMoved() {
-      x += pmouseX - mouseX;
-      y += pmouseY - mouseY;
-    }
-  </script>
-
-
 <div id="text-behind">
   <p>In the realm of sins, where shadows dance,
     Gluttony emerges, in a deadly trance.
@@ -658,8 +566,7 @@
     It devours the soul, like a relentless fire.
     </p>
 </div>
-
-
+<script src="gluttony.js"></script>
 </body>
 </html>
 
