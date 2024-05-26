@@ -3,6 +3,7 @@ body {
       overflow: hidden;
       cursor: none;
       width: 100vw;
+      overflow: hidden;
     }
 
     .container {
