@@ -17,7 +17,8 @@ let clearingRadius = 0;
 
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
-  canvas.parent('container'); // Append canvas to the container div
+  canvas.style('z-index', '1'); // Set the canvas to have a higher z-index
+  canvas.position(0, 0); // Ensure it covers the whole screen
   textSize(fontSize);
 }
 
