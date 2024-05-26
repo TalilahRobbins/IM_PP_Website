@@ -17,13 +17,12 @@ let clearingRadius = 0;
 
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
-  canvas.style('z-index', '1'); // Set the canvas to have a higher z-index
-  canvas.position(0, 0); // Ensure it covers the whole screen
+  canvas.parent('canvas-container'); // Append canvas to the container div
   textSize(fontSize);
 }
 
 function draw() {
-  background(255, 255, 255, 0); // Ensure background is transparent
+  clear(); // Clear the canvas each frame for the animation
 
   let t = frameCount * noiseScale;
   for (let i = 0; i < width; i += fontSize) {
