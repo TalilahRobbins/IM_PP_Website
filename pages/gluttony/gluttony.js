@@ -46,7 +46,8 @@ function draw() {
     }
   }
 
-  stroke(0, 0);
+  noFill();
+  noStroke();
   ellipse(mouseX, mouseY, cursorSize, cursorSize);
 }
 
