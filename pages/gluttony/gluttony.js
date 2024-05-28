@@ -3,7 +3,7 @@
 
 let x = (y = 0);
 const fontSize = 16;
-const noiseScale = 0.0004;
+const noiseScale = 0.0009;
 const noiseStrength = 30;
 const foodEmojis = [
   "🍏",
